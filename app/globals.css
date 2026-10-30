@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+  body {
+    @apply bg-preto font-sans text-texto antialiased;
+    font-size: 16px;
+    line-height: 1.55;
+    overflow-x: clip;
+  }
+  /* Espaço para o botão flutuante no celular: ele nunca cobre o conteúdo. */
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: calc(76px + env(safe-area-inset-bottom));
+    }
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--ouro-claro));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .claro :focus-visible {
+    outline-color: rgb(var(--preto));
+  }
+  h1, h2, h3 {
+    @apply font-display;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .num {
+    @apply font-mono;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-pagina px-4 md:px-8;
+  }
+  .rotulo {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-texto-2;
+  }
+  .claro .rotulo {
+    color: rgb(var(--preto) / 0.68);
+  }
+  .filete {
+    height: 1px;
+    background: linear-gradient(90deg, rgb(var(--ouro-claro) / 0.7), rgb(var(--ouro-claro) / 0));
+  }
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-semibold transition-[transform,background-color,color] duration-200;
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn-ouro {
+    @apply btn bg-ouro text-preto hover:bg-ouro-claro;
+  }
+  .btn-linha {
+    @apply btn border border-texto/30 text-texto hover:border-ouro hover:text-ouro-claro;
+  }
+  .claro .btn-linha {
+    @apply border-preto/30 text-preto hover:border-preto hover:text-preto;
+  }
+  .chip {
+    @apply inline-flex min-h-[44px] items-center gap-2 rounded-full border border-texto/20 px-4 text-sm text-texto-2 transition-colors;
+  }
+  .chip[aria-pressed="true"],
+  .chip[aria-checked="true"],
+  .chip[aria-selected="true"] {
+    @apply border-ouro bg-ouro text-preto;
+  }
+
+  /* Dado aguardando revisão do dono: visível na pré-visualização, bloqueia o build de produção. */
+  .pendente {
+    @apply rounded-sm px-1 font-mono text-[0.78em];
+    background: rgb(var(--amarelo) / 0.14);
+    outline: 1px dashed rgb(var(--amarelo) / 0.7);
+    color: inherit;
+    overflow-wrap: anywhere;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .claro .pendente {
+    background: rgb(var(--laranja) / 0.12);
+    outline-color: rgb(var(--laranja));
+  }
+  .a-revisar {
+    text-decoration: underline dotted rgb(var(--amarelo) / 0.8);
+    text-underline-offset: 4px;
+  }
+}
+
+/* ---------- Motion leve ---------- */
+.js [data-revelar] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.js [data-revelar].visivel {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes faixa {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.faixa-trilho {
+  animation: faixa 48s linear infinite;
+}
+
+.inclina {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+
+/* Card da vitrine: aparelho sobe e "Quero este" aparece (hover, foco ou 1º toque). */
+.card-palco img,
+.card-palco svg {
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.card-cta {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+@media (hover: hover) {
+  .card:hover .card-palco img,
+  .card:hover .card-palco svg {
+    transform: translateY(-8px);
+  }
+  .card:hover .card-cta {
+    opacity: 1;
+    transform: none;
+  }
+}
+.card[data-ativo="true"] .card-palco img,
+.card[data-ativo="true"] .card-palco svg,
+.card:focus-within .card-palco img,
+.card:focus-within .card-palco svg {
+  transform: translateY(-8px);
+}
+.card[data-ativo="true"] .card-cta,
+.card:focus-within .card-cta,
+.card[data-esgotado="true"] .card-cta {
+  opacity: 1;
+  transform: none;
+}
+
+/* No toque, o botão invisível não recebe o 1º toque (ele só ativa o card). */
+@media (hover: none) {
+  .card:not([data-ativo="true"]):not([data-esgotado="true"]) .card-cta {
+    pointer-events: none;
+  }
+}
+
+/* Foto com fundo branco sobre o palco claro: multiply funde o branco no marfim (sem retângulo). */
+.funde {
+  mix-blend-mode: multiply;
+}
+
+.sem-barra::-webkit-scrollbar {
+  display: none;
+}
+.sem-barra {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-revelar] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .faixa-trilho {
+    animation: none;
+  }
+  .inclina,
+  .card-palco img,
+  .card-palco svg,
+  .card-cta,
+  .btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}

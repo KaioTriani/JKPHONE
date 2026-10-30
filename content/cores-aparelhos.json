@@ -1,0 +1,20 @@
+{
+  "_leia": "Cor da bolinha de cada nome de cor. Só é usada quando existe foto daquela cor; sem foto, aparece só o nome.",
+  "Preto": "#1d1d1f",
+  "Meia-noite": "#232a31",
+  "Branco": "#f2f0eb",
+  "Estelar": "#ece6dc",
+  "Azul": "#9db4c9",
+  "Rosa": "#f2c6cf",
+  "Verde": "#c8d5c0",
+  "Verde-acinzentado": "#b9c4b8",
+  "Amarelo": "#f4e3a0",
+  "Roxo": "#cdbfdc",
+  "Roxo-profundo": "#4b4152",
+  "Vermelho": "#b8202e",
+  "Titânio natural": "#bdb7ab",
+  "Titânio preto": "#3b3a38",
+  "Titânio branco": "#e4e2dd",
+  "Titânio azul": "#3f4a5a",
+  "Areia": "#d9c7a7"
+}

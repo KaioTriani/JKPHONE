@@ -1,0 +1,102 @@
+{
+  "_leia": "Cada dado tem 'valor', 'origem' (perfil | dono | pendente | lei) e 'revisado'. Depois de conferir, troque o valor e marque revisado: true. O build de produção falha enquanto houver [CONFIRMAR] ou revisado: false.",
+
+  "siteUrl": { "valor": "[CONFIRMAR domínio do site, ex.: https://jkiphonebr.com.br]", "origem": "pendente", "revisado": false },
+  "fusoHorario": "America/Fortaleza",
+  "fusoUTC": "-03:00",
+
+  "marca": {
+    "nome": { "valor": "JK iPhone BR", "origem": "perfil", "revisado": false },
+    "instagram": { "valor": "jkphonebr", "origem": "perfil", "revisado": false },
+    "seguidores": { "valor": "76,9 mil", "data": "2026-10-30", "origem": "perfil", "revisado": false, "nota": "Só aparece se revisado e com data de até 30 dias." },
+    "logo": { "valor": "/marca/logo.png", "origem": "pendente", "revisado": false, "nota": "[CONFIRMAR] enviar o logo original em SVG ou PNG transparente para public/marca/" },
+    "razaoSocial": { "valor": "[CONFIRMAR nome empresarial]", "origem": "pendente", "revisado": false },
+    "cnpj": { "valor": "[CONFIRMAR CNPJ]", "origem": "pendente", "revisado": false }
+  },
+
+  "cores": {
+    "_nota": "Confirmar pelo logo original (npm run tokens:logo sugere os valores).",
+    "preto": "#0A0A0B",
+    "grafite": "#141416",
+    "ouro": "#C8A24B",
+    "ouro-claro": "#E6C875",
+    "marfim": "#F3EEE3",
+    "madeira": "#C9A57A",
+    "texto": "#F3EEE3",
+    "texto-2": "#A9A59C",
+    "rosa": "#E4308B",
+    "laranja": "#FF7A1A",
+    "amarelo": "#FFC21A",
+    "azul": "#2C7BE5"
+  },
+
+  "whatsapp": {
+    "numero": { "valor": "[CONFIRMAR 55DDDNÚMERO, só dígitos]", "origem": "pendente", "revisado": false },
+    "linkPerfil": { "valor": "https://wa.me/message/FWVMF3IHIQMMB1", "origem": "perfil", "revisado": false, "nota": "[CONFIRMAR caractere por caractere]. Este link não aceita mensagem pronta: só é usado se não houver número." }
+  },
+
+  "loja": {
+    "bairro": { "valor": "Altiplano", "origem": "perfil", "revisado": false },
+    "endereco": { "valor": "[CONFIRMAR rua, número e complemento]", "origem": "pendente", "revisado": false },
+    "cidade": { "valor": "[CONFIRMAR cidade]", "origem": "pendente", "revisado": false },
+    "uf": { "valor": "[CONFIRMAR UF]", "origem": "pendente", "revisado": false },
+    "cep": { "valor": "[CONFIRMAR CEP]", "origem": "pendente", "revisado": false },
+    "mapsUrl": { "valor": "[CONFIRMAR link do Google Maps da loja]", "origem": "pendente", "revisado": false },
+    "horario": {
+      "valor": null,
+      "origem": "pendente",
+      "revisado": false,
+      "nota": "[CONFIRMAR] formato: { \"seg\": [\"09:00\", \"18:00\"], ..., \"dom\": null }. Dias com null ficam fechados no agendador."
+    },
+    "fotos": [
+      { "arquivo": "loja/mural", "alt": "Mural colorido em estilo pop-art na parede do showroom da JK iPhone BR" },
+      { "arquivo": "loja/prateleiras", "alt": "Prateleiras de madeira clara com iPhones expostos no showroom" },
+      { "arquivo": "loja/balcao", "alt": "Balcão de mármore branco do atendimento" },
+      { "arquivo": "loja/vitrine", "alt": "Vitrine iluminada com aparelhos lado a lado" },
+      { "arquivo": "loja/fachada", "alt": "Fachada da loja JK iPhone BR no Altiplano" }
+    ],
+    "fotoHero": { "arquivo": "loja/hero", "alt": "Showroom da JK iPhone BR com o mural colorido e as prateleiras de aparelhos" }
+  },
+
+  "condicoes": {
+    "garantiaLojaPrazo": { "valor": "até 1 ano", "origem": "perfil", "revisado": false },
+    "garantiaLojaCobertura": { "valor": "[CONFIRMAR o que a garantia da loja cobre e o que não cobre]", "origem": "pendente", "revisado": false },
+    "garantiaLojaAparelhos": { "valor": "[CONFIRMAR a quais aparelhos se aplica e o prazo de cada condição]", "origem": "pendente", "revisado": false },
+    "garantiaLegal": { "valor": "90 dias para bem durável (Código de Defesa do Consumidor, art. 26, II). A garantia da loja é adicional a ela.", "origem": "lei", "revisado": true },
+    "parcelasMax": { "valor": 18, "origem": "perfil", "revisado": false },
+    "parcelamentoJuros": { "valor": "[CONFIRMAR se há juros e a partir de qual parcela]", "origem": "pendente", "revisado": false },
+    "parcelaMinima": { "valor": "[CONFIRMAR valor mínimo da parcela]", "origem": "pendente", "revisado": false },
+    "coeficientes": {
+      "valor": null,
+      "origem": "pendente",
+      "revisado": false,
+      "nota": "[CONFIRMAR] tabela da maquininha, ex.: { \"1\": 1, \"2\": 0.5150, ... \"18\": 0.0742 }. Com ela, o simulador de parcelas aparece."
+    },
+    "formasPagamento": { "valor": "[CONFIRMAR Pix, dinheiro, débito, crédito...]", "origem": "pendente", "revisado": false },
+    "origemAparelhos": { "valor": "[CONFIRMAR se os aparelhos são nacionais, importados ou ambos]", "origem": "pendente", "revisado": false },
+    "troca": { "valor": "[CONFIRMAR se aceita aparelho usado como parte do pagamento e como avalia]", "origem": "pendente", "revisado": false },
+    "entrega": { "valor": "[CONFIRMAR se entrega, onde e com que custo]", "origem": "pendente", "revisado": false }
+  },
+
+  "textos": {
+    "headline": "iPhone com loja de verdade, no Altiplano.",
+    "headlinesAlternativas": [
+      "Escolha aqui. Confira na loja. Leve com garantia.",
+      "Veja o aparelho na vitrine e segure ele na mão antes de fechar."
+    ],
+    "subtitulo": "Veja os aparelhos disponíveis, chame no WhatsApp com o modelo escolhido e venha conferir pessoalmente na nossa loja física.",
+    "ctaFinalTitulo": "Achou o seu? A gente separa.",
+    "ctaFinalTexto": "Mande o modelo no WhatsApp, combine o horário e venha buscar na loja."
+  },
+
+  "faq": [
+    { "pergunta": "Qual é a garantia?", "resposta": { "valor": "[CONFIRMAR prazo, cobertura e para quais aparelhos. Lembrete: a garantia legal de 90 dias do CDC vale sempre; a da loja é adicional.]", "origem": "pendente", "revisado": false } },
+    { "pergunta": "Como funciona o parcelamento?", "resposta": { "valor": "[CONFIRMAR número de parcelas, juros, valor mínimo e total]", "origem": "pendente", "revisado": false } },
+    { "pergunta": "Os aparelhos são nacionais ou importados?", "resposta": { "valor": "[CONFIRMAR origem dos aparelhos e como isso aparece em cada anúncio]", "origem": "pendente", "revisado": false } },
+    { "pergunta": "Vocês aceitam meu aparelho usado na troca?", "resposta": { "valor": "[CONFIRMAR se aceita e como é feita a avaliação]", "origem": "pendente", "revisado": false } },
+    { "pergunta": "Vocês entregam?", "resposta": { "valor": "[CONFIRMAR regiões, prazos e custo da entrega]", "origem": "pendente", "revisado": false } },
+    { "pergunta": "Preciso agendar para ir à loja?", "resposta": { "valor": "[CONFIRMAR se é obrigatório agendar ou se a loja atende por ordem de chegada]", "origem": "pendente", "revisado": false } }
+  ],
+
+  "clientes": []
+}

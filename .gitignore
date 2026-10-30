@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+qa/screens/
+# Originais podem ter GPS/EXIF: ficam só no computador do dono.
+originais/**/*.jpg
+originais/**/*.jpeg
+originais/**/*.png
+originais/**/*.heic
+!originais/**/.gitkeep
