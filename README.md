@@ -15,9 +15,8 @@ npm run check:placeholders
 
 Todo dado tem `valor`, `origem` (`perfil`, `dono`, `pendente`, `lei`) e `revisado`. O que veio do perfil do Instagram entra com `revisado: false`; o resto está como `[CONFIRMAR ...]`.
 
-- **`npm run build` falha** enquanto existir `[CONFIRMAR`, `revisado: false`, produto `exemplo: true`, logo ou foto do hero faltando. Isso é proposital.
+- Rode `npm run check:placeholders` antes de divulgar o site: ele lista tudo que ainda falta (`[CONFIRMAR`, `revisado: false`, produtos de EXEMPLO, logo e foto do hero). O build não depende dele.
 - Na pré-visualização, pendências aparecem marcadas em amarelo tracejado na própria página.
-- Para pré-visualizar mesmo assim: `npm run build:preview` (local) ou `PERMITIR_PENDENCIAS=1` / ambiente de preview da Vercel. **Nunca em produção.**
 
 ## Trocar coisas em 10 minutos
 
@@ -91,7 +90,7 @@ npm run importar-lista -- lista.txt --gravar   # grava content/produtos.json
 1. Crie uma planilha com os cabeçalhos: `id, categoria, modelo, armazenamento, cores, condicao, bateria, origem, preco, parcelado, promocao, validade, status, destaque, fotos, fotoIlustrativa`.
    - `cores`: separadas por `;` · `preco`: em centavos · `promocao`/`destaque`: `sim` ou vazio · `fotos`: `Preto=produtos/id/preto; Azul=produtos/id/azul`.
 2. Arquivo → Compartilhar → Publicar na Web → a aba → **CSV** → copie o link.
-3. Na Vercel/Netlify, defina `PLANILHA_CSV_URL` com esse link.
+3. Na hospedagem (Hostinger, Vercel...), defina `PLANILHA_CSV_URL` com esse link.
 
 O site relê a planilha a cada 5 minutos. Se ela falhar ou tiver erro, usa `content/produtos.json`.
 
@@ -122,15 +121,15 @@ Sem foto, o card mostra uma silhueta com "foto em breve".
 ## QA e imagem de compartilhamento
 
 ```bash
-npm run build:preview && npm start
+npm run build && npm start
 npm run screenshots              # qa/screens/{360,390,768,1440}.png + checa rolagem horizontal, nome/preço cortados, alvos < 44 px
 npm run screenshots -- --og      # também gera public/og.jpg (1200x630) a partir de /og
 ```
 Rode `--og` de novo sempre que trocar logo, foto do hero ou headline. Usa o Edge/Chrome instalados.
 
-## Deploy (Vercel)
+## Deploy (Hostinger)
 
-Importe o repositório, defina `NEXT_PUBLIC_SITE_URL` e as variáveis opcionais. Previews da Vercel passam mesmo com pendências; produção só passa com tudo confirmado.
+Importe o repositório do GitHub como app Node.js. Build: `npm run build` · Início: `npm start` · Node 20 ou mais novo. Variável: só `NEXT_PUBLIC_SITE_URL` (as outras são opcionais; não crie as que não usar).
 
 ---
 iPhone é marca da Apple Inc. A JK iPhone BR é loja independente, sem vínculo com a Apple. Este projeto não usa imagens, logotipos ou fontes da Apple.
